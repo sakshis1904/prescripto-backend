@@ -12,7 +12,14 @@ const app = express()
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://prescripto-admin-jade.vercel.app/',
+    'https://prescripto-frontend-rge7.vercel.app/'
+  ],
+  credentials: true
+}));
+
 app.use(express.urlencoded({ extended: true }));
 
 await connectDB();
